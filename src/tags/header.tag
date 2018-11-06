@@ -17,7 +17,7 @@ import { PreferencesService } from '../services';
           <name name={ opts.data.demographics.name } class="text-muted"/>
         </span>
         <span class="navbar-brand" if={ !opts.data }>
-          No Document Loaded
+          Loading...
         </span>
       </div>
 
