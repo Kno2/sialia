@@ -1,9 +1,8 @@
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 $fa-font-path: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/";
 @import "~font-awesome/scss/font-awesome";
-@import "~bootswatch/cosmo/variables";
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap";
-@import "~bootswatch/cosmo/bootswatch";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/cosmo/variables";
+@import "~bootswatch/dist/cosmo/bootswatch";
 @import '~dragula/dist/dragula';
 
 $body-bg: #f2f2f2;
@@ -75,7 +74,7 @@ sialia {
         background-color: #fafafa;
         border: 1px solid #eee;
     }
-    @media (min-width: $screen-sm-min) {
+    @media (min-width: 768px) {
         #left {
             position: fixed;
             padding-right: 8px;

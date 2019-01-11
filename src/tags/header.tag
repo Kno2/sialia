@@ -3,7 +3,7 @@ import { DocumentsService } from '../services';
 import { PreferencesService } from '../services';
 
 <header>
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
@@ -56,7 +56,6 @@ import { PreferencesService } from '../services';
           <li class="dropdown" if={ opts.sections && opts.sections.length }>
             <a href="#" class="dropdown-toggle" id="jump" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Jump to
-              <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="jump">
               <li>
