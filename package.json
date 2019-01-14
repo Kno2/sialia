@@ -1,6 +1,6 @@
 {
   "name": "ccdaview",
-  "version": "1.0.0-rc.18",
+  "version": "1.0.0-rc.23",
   "main": "dist/sialia.js",
   "module": "dist/sialia.js",
   "typings": "dist/index",
@@ -13,6 +13,7 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
+    "autoprefixer": "^9.4.5",
     "bluebutton": "github:Royal-Jay/bluebutton.js#0.5.0-rc.6",
     "bootstrap": "^4.2.1",
     "core-js": "^2.5.7",
