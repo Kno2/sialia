@@ -3,7 +3,7 @@ import { DocumentsService } from '../services';
 import { PreferencesService } from '../services';
 
 <header>
-  <nav class="navbar navbar-expand-lg navbar-default">
+  <nav id="headerMenu" class="navbar navbar-expand-lg navbar-default fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
