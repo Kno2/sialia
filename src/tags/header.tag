@@ -3,81 +3,38 @@ import { DocumentsService } from '../services';
 import { PreferencesService } from '../services';
 
 <header>
-  <nav id="headerMenu" class="navbar navbar-expand-lg navbar-default fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <span class="navbar-brand" if={ opts.data }>
-          { opts.data.document.title } -
-          <name name={ opts.data.demographics.name } class="text-muted"/>
-        </span>
-        <span class="navbar-brand" if={ !opts.data }>
-          Loading...
-        </span>
-      </div>
-
-      <div class="collapse navbar-collapse" id="navbar-collapse-1">
-
-        <!-- <form class="navbar-form navbar-right" role="search" id="search">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-default" aria-label="Search">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </span>
-          </div>
-        </form> -->
-
-        <ul class="nav navbar-nav navbar-right" id="jump-nav">
-          <li if={ opts.documents && opts.documents.length === 1 && opts.documents[0].name }>
-            <span class="navbar-text">
-              { opts.documents[0].name }
-            </span>
-          </li>
-          <li class="dropdown" if={ opts.documents && opts.documents.length > 1 }>
-            <a href="#" class="dropdown-toggle" id="jump" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              Documents
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="jump">
-              <li each={ opts.documents } class={ active: active }>
-                <a href="#" onclick={ load }>
-                  { name }
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown" if={ opts.sections && opts.sections.length }>
-            <a href="#" class="dropdown-toggle" id="jump" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <span class="navbar-brand" if={ opts.data }>
+        { opts.data.document.title } -
+        <name name={ opts.data.demographics.name } class="text-muted"/>
+      </span>
+      <span class="navbar-brand" if={ !opts.data }>
+        Loading...
+      </span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown" if={ opts.sections && opts.sections.length }>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Jump to
             </a>
-            <ul class="dropdown-menu" aria-labelledby="jump">
-              <li>
-                <a href="#">Top</a>
-              </li>
-              <li role="separator" class="divider"></li>
-              <li each={ opts.sections }>
-                <a href="#{ key }">
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Top</a>
+            <div class="dropdown-divider"></div>
+                <a each={ opts.sections } class="dropdown-item" href="#{ key }">
                   <i class="fa fa-{ icon }" aria-hidden="true"></i>
                   { display }
                 </a>
-              </li>
-            </ul>
+            </div>
           </li>
-          <li class={ active: this.parent.showPreferences } if={ opts.sections }>
-            <a href="#" onclick={ showPreferences }>
+          <li class="dropdown-menu-right { active: this.parent.showPreferences }" if={ opts.sections }>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-lg fa-cog"></i>
             </a>
           </li>
         </ul>
-
-      </div>
     </div>
   </nav>
   

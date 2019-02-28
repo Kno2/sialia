@@ -4,6 +4,7 @@ $fa-font-path: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/
 @import "~bootswatch/dist/cosmo/variables";
 @import "~bootswatch/dist/cosmo/bootswatch";
 @import '~dragula/dist/dragula';
+@import 'custom';
 
 $body-bg: #f2f2f2;
 $mild: #ffdc67; //$mild: #ffea18;
@@ -91,6 +92,13 @@ sialia {
     }
 
     #demographics {
+        margin-bottom: 21px;
+        background-color: #fff;
+        border: 1px solid transparent;
+        border-color: #ddd;
+        border-radius: 0;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+
         .fa-ul {
             margin-left: 24px;
         }
@@ -101,6 +109,9 @@ sialia {
     }
 
     .panel-heading {
+        color: #333;
+        background-color: #f5f5f5;
+        border-color: #ddd;
         position: relative;
 
         .toggle-body {
@@ -112,6 +123,8 @@ sialia {
 
     .panel-body,
     .panel-heading {
+        padding: 10px 15px;
+
         & > *:last-child {
             margin-bottom: 0;
         }
@@ -183,9 +196,10 @@ sialia {
 
     .dropdown-toggle:after {
         margin: -2px 0 !important;
-        border-top: 0.25em solid #8b9296 !important;
-        border-left: 0.25em solid transparent !important;
-        border-right: 0.25em solid transparent !important;
+        // border-top: 0.25em solid #8b9296 !important;
+        // border-left: 0.25em solid transparent !important;
+        // border-right: 0.25em solid transparent !important;
+        border: none !important;
     }
 
     list {
