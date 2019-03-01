@@ -2442,7 +2442,7 @@ strong {
   font-weight: bolder; }
 
 small {
-  font-size: 65%; 
+  font-size: 65% !important; 
   color: #999}
 
 sub,
