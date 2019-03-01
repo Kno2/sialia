@@ -2,7 +2,7 @@
   <header data={ opts.data } sections={ opts.sections } documents={ opts.documents }/>
   <div class="container-fluid sialia-body" if={ opts.data }>
     <div class="row">
-      <div class="col-lg-3 col-sm-4">
+      <div class="col-lg-4 col-sm-4">
         <demographics demographics={ opts.data.demographics }/>
       </div>
       <div class="col-lg-9 col-sm-8" id="right" if={ showPreferences && !showNonXml}>
