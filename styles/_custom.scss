@@ -15,3 +15,15 @@ h3,
 body {
     font-size: 15px !important;
 }
+
+.navbar-dark .navbar-toggler {
+    color: #fff;
+}
+
+.jump-to:after {
+    margin: -2px 0 !important;
+    border-top: 0.25em solid #8b9296 !important;
+    border-left: 0.25em solid transparent !important;
+    border-right: 0.25em solid transparent !important;
+    // border: none !important;
+}

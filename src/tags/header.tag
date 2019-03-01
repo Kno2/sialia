@@ -17,7 +17,7 @@ import { PreferencesService } from '../services';
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown" if={ opts.sections && opts.sections.length }>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="jump-to nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Jump to
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -29,8 +29,8 @@ import { PreferencesService } from '../services';
                 </a>
             </div>
           </li>
-          <li class="dropdown-menu-right { active: this.parent.showPreferences }" if={ opts.sections }>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li class="{ active: this.parent.showPreferences }" if={ opts.sections }>
+            <a class="nav-link dropdown-toggle" href="#" onclick={ showPreferences }>
               <i class="fa fa-lg fa-cog"></i>
             </a>
           </li>
