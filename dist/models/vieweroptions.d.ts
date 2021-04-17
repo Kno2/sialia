@@ -1,8 +1,8 @@
 import { Section } from './section';
 import { Preferences } from './preferences';
 export declare class ViewerOptions {
-    sections: Section[];
+    sections: Array<Section>;
     data: any;
     pref: Preferences;
-    documents?: any[];
+    documents?: Array<any>;
 }

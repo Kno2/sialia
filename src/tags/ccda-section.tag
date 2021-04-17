@@ -10,7 +10,7 @@
     };
 
     var self = this;
-    this.parent = opts.parent;
+    Object.assign({}, this.parent, opts.parent);
     this.current = opts.current;
     this.data = self.parent.opts.data[self.current.key];  
     this.on('update', function() {

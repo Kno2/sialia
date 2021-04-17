@@ -139,7 +139,7 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 /* 4 */
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.6.5' };
+var core = module.exports = { version: '2.6.12' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -174,12 +174,19 @@ module.exports = __webpack_require__(10) ? function (object, key, value) {
 
 "use strict";
 
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(34));
-__export(__webpack_require__(57));
+__exportStar(__webpack_require__(34), exports);
+__exportStar(__webpack_require__(57), exports);
 
 
 /***/ }),
@@ -251,16 +258,20 @@ module.exports = {};
 
 "use strict";
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var lodash = __webpack_require__(1);
-var $ = __webpack_require__(33);
+exports.bootstrapize = exports.getElementIndex = void 0;
+var lodash_1 = __importDefault(__webpack_require__(1));
+var jquery_1 = __importDefault(__webpack_require__(33));
 function getElementIndex(node) {
-    var children = lodash.filter([].slice.call(node.parentNode.childNodes), { nodeType: 1 });
+    var children = lodash_1.default.filter([].slice.call(node.parentNode.childNodes), { nodeType: 1 });
     return Array.prototype.indexOf.call(children, node);
 }
 exports.getElementIndex = getElementIndex;
 function bootstrapize(html) {
-    var $html = $('<div />');
+    var $html = jquery_1.default('<div />');
     $html.html(html);
     var $all = $html.find('*').removeAttr('width border xmlns');
     $all.filter('table')
@@ -410,10 +421,14 @@ module.exports = function (it) {
 
 "use strict";
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(1);
+exports.updateSortOrder = void 0;
+var lodash_1 = __importDefault(__webpack_require__(1));
 function updateSortOrder(sections) {
-    _.each(sections, function (v, k) {
+    lodash_1.default.each(sections, function (v, k) {
         v.sort = k;
     });
     return sections;
@@ -464,7 +479,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 })('versions', []).push({
   version: core.version,
   mode: __webpack_require__(23) ? 'pure' : 'global',
-  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2020 Denis Pushkarev (zloirock.ru)'
 });
 
 
@@ -589,9 +604,12 @@ module.exports.f = function (C) {
 
 "use strict";
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(1);
-_.mixin({
+var lodash_1 = __importDefault(__webpack_require__(1));
+lodash_1.default.mixin({
     move: function (array, fromIndex, toIndex) {
         array.splice(toIndex, 0, array.splice(fromIndex, 1)[0]);
         return array;
@@ -611,21 +629,25 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__33__;
 
 "use strict";
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PreferencesService = void 0;
 var models_1 = __webpack_require__(35);
-var _ = __webpack_require__(1);
+var lodash_1 = __importDefault(__webpack_require__(1));
 var PreferencesService = /** @class */ (function () {
     function PreferencesService() {
     }
     PreferencesService.prototype.save = function (opts) {
-        var enabled = _.filter(opts.sections, function (item) {
+        var enabled = lodash_1.default.filter(opts.sections, function (item) {
             return item.enabled;
         });
-        var sortOrder = _.map(opts.sections, function (item) {
+        var sortOrder = lodash_1.default.map(opts.sections, function (item) {
             return item.key;
         });
         var pref = this.getPreferences(opts.pref.type);
-        pref.enabledSectionKeys = _.map(enabled, function (item) {
+        pref.enabledSectionKeys = lodash_1.default.map(enabled, function (item) {
             return item.key;
         });
         pref.sortedSectionKeys = sortOrder;
@@ -634,7 +656,11 @@ var PreferencesService = /** @class */ (function () {
         localStorage.setItem(storageId, JSON.stringify(pref));
     };
     PreferencesService.prototype.getPreferences = function (docType) {
-        var id = docType.templateId, storageId = 'doc_' + id, prefString = localStorage.getItem(storageId), pref = JSON.parse(prefString), isSet = pref !== null;
+        var id = docType.templateId;
+        var storageId = 'doc_' + id;
+        var prefString = localStorage.getItem(storageId);
+        var pref = JSON.parse(prefString);
+        var isSet = pref !== null;
         if (!isSet) {
             pref = {
                 id: id,
@@ -657,14 +683,21 @@ exports.PreferencesService = PreferencesService;
 
 "use strict";
 
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(54));
-__export(__webpack_require__(20));
-__export(__webpack_require__(55));
-__export(__webpack_require__(56));
+__exportStar(__webpack_require__(54), exports);
+__exportStar(__webpack_require__(20), exports);
+__exportStar(__webpack_require__(55), exports);
+__exportStar(__webpack_require__(56), exports);
 
 
 /***/ }),
@@ -962,6 +995,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__47__;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.languages = void 0;
 exports.languages = {
     'aa': 'Afar',
     'aar': 'Afar',
@@ -1154,15 +1188,22 @@ exports.languages = {
 
 "use strict";
 
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 __webpack_require__(118);
 __webpack_require__(50);
 __webpack_require__(51);
 __webpack_require__(83);
-__export(__webpack_require__(117));
+__exportStar(__webpack_require__(117), exports);
 
 
 /***/ }),
@@ -1312,6 +1353,7 @@ riot.tag2('preference-section', '<li class="list-group-item preferences-section 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.isDocument = void 0;
 function isDocument(arg) {
     return arg.url !== undefined;
 }
@@ -1325,6 +1367,7 @@ exports.isDocument = isDocument;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ViewerOptions = void 0;
 var ViewerOptions = /** @class */ (function () {
     function ViewerOptions() {
     }
@@ -1339,8 +1382,12 @@ exports.ViewerOptions = ViewerOptions;
 
 "use strict";
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(1);
+exports.Preferences = void 0;
+var lodash_1 = __importDefault(__webpack_require__(1));
 var Preferences = /** @class */ (function () {
     function Preferences(pref) {
         this.id = pref.id;
@@ -1350,7 +1397,7 @@ var Preferences = /** @class */ (function () {
         this.isSet = pref.isSet;
     }
     Preferences.prototype.isSectionEnabled = function (key) {
-        return _.some(this.enabledSectionKeys, function (k) {
+        return lodash_1.default.some(this.enabledSectionKeys, function (k) {
             return k === key;
         });
     };
@@ -1368,10 +1415,14 @@ exports.Preferences = Preferences;
 
 "use strict";
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var $ = __webpack_require__(33);
-var _ = __webpack_require__(1);
-var bluebutton = __webpack_require__(58);
+exports.DocumentsService = void 0;
+var jquery_1 = __importDefault(__webpack_require__(33));
+var lodash_1 = __importDefault(__webpack_require__(1));
+var bluebutton_1 = __importDefault(__webpack_require__(58));
 var config_1 = __webpack_require__(59);
 var preferences_service_1 = __webpack_require__(34);
 var DocumentsService = /** @class */ (function () {
@@ -1383,10 +1434,10 @@ var DocumentsService = /** @class */ (function () {
     };
     DocumentsService.prototype.getSections = function (bb, sections, ignoreSections, pref) {
         var allSections = [];
-        _.each(bb.data, function (val, key) {
-            if (_.includes(ignoreSections, key))
+        lodash_1.default.each(bb.data, function (val, key) {
+            if (lodash_1.default.includes(ignoreSections, key))
                 return;
-            var match = _.find(sections, function (s) { return s.key === key; });
+            var match = lodash_1.default.find(sections, function (s) { return s.key === key; });
             if (match) {
                 match.sort = pref.indexOfSection(key);
                 allSections.push(match);
@@ -1401,10 +1452,10 @@ var DocumentsService = /** @class */ (function () {
                 });
         });
         // sort by name first, then by sort order
-        allSections = _.sortBy(allSections, function (s) { return s.display.toLowerCase(); });
-        allSections = _.sortBy(allSections, function (s) { return s.sort; });
+        allSections = lodash_1.default.sortBy(allSections, function (s) { return s.display.toLowerCase(); });
+        allSections = lodash_1.default.sortBy(allSections, function (s) { return s.sort; });
         // init sort and enabled
-        _.each(allSections, function (val, index) {
+        lodash_1.default.each(allSections, function (val, index) {
             val.enabled = pref.isSectionEnabled(val.key);
         });
         return allSections;
@@ -1412,7 +1463,7 @@ var DocumentsService = /** @class */ (function () {
     DocumentsService.prototype.fetch = function (document) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            $.get({
+            jquery_1.default.get({
                 url: document.url,
                 headers: _this.config.headers || {},
                 dataType: 'text',
@@ -1428,7 +1479,7 @@ var DocumentsService = /** @class */ (function () {
         return this.fetch(document).then(function (x) { return _this.load(x); });
     };
     DocumentsService.prototype.load = function (data) {
-        var bb = bluebutton(data);
+        var bb = bluebutton_1.default(data);
         if (!bb.data)
             throw 'BlueButton could not parse the file.';
         var pref = new preferences_service_1.PreferencesService().getPreferences(bb.data.document.type);
@@ -1456,6 +1507,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__58__;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.IGNORE_SECTIONS = exports.SECTIONS = void 0;
 exports.SECTIONS = [
     { key: 'allergies', display: 'Allergies', tagName: 'generic', icon: 'pagelines' },
     { key: 'care_plan', display: 'Care Plan', tagName: 'generic', icon: 'sticky-note-o' },
@@ -1598,7 +1650,7 @@ riot.tag2('panel', '<div class="panel panel-{opts.state ? opts.state : \'default
     };
 
     var self = this;
-    this.parent = opts.parent;
+    Object.assign({}, this.parent, opts.parent);
     this.current = opts.current;
     this.data = self.parent.opts.data[self.current.key];
     this.on('update', function() {
@@ -2965,16 +3017,23 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 
 "use strict";
 
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var riot_1 = __webpack_require__(0);
+exports.Sialia = void 0;
+var riot_1 = __importDefault(__webpack_require__(0));
 var models_1 = __webpack_require__(35);
 var services_1 = __webpack_require__(7);
 var Sialia = /** @class */ (function () {
@@ -2992,7 +3051,7 @@ var Sialia = /** @class */ (function () {
         }); });
         this.documentService.setHeaders(__assign({}, (config.headers || {})));
         if (this.documents[0]) {
-            this.open(this.documents[0]);
+            return this.open(this.documents[0]);
         }
     };
     Sialia.prototype.open = function (documentOrString) {
@@ -3002,7 +3061,8 @@ var Sialia = /** @class */ (function () {
             document = { url: documentOrString };
         }
         if (document) {
-            return this.documentService.open(document).then(function (options) {
+            return this.documentService.open(document)
+                .then(function (options) {
                 options.documents = _this.documents || [document];
                 _this.instance.opts = options;
                 _this.instance.update();

@@ -20,11 +20,6 @@ export default {
                 }
             },
             {
-                test: /\.ts$/,
-                enforce: 'pre',
-                loader: 'tslint-loader'
-            },
-            {
                 test: /\.ts(x?)$/,
                 exclude: /node_modules/,
                 use: 'ts-loader',

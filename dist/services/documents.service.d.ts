@@ -9,7 +9,7 @@ export declare class DocumentsService {
     setHeaders(headers: {
         [key: string]: string;
     }): void;
-    getSections(bb: any, sections: Section[], ignoreSections: string[], pref: Preferences): Section[];
+    getSections(bb: any, sections: Array<Section>, ignoreSections: Array<string>, pref: Preferences): Array<Section>;
     fetch(document: Document): Promise<string>;
     open(document: Document): Promise<ViewerOptions>;
     load(data: any): ViewerOptions;

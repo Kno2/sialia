@@ -8,15 +8,15 @@ export interface DocType {
 export interface IPreferences {
     id: string;
     type: DocType;
-    enabledSectionKeys: string[];
-    sortedSectionKeys: string[];
+    enabledSectionKeys: Array<string>;
+    sortedSectionKeys: Array<string>;
     isSet: boolean;
 }
 export declare class Preferences {
     id: string;
     type: DocType;
-    enabledSectionKeys: string[];
-    sortedSectionKeys: string[];
+    enabledSectionKeys: Array<string>;
+    sortedSectionKeys: Array<string>;
     isSet: boolean;
     constructor(pref: IPreferences);
     isSectionEnabled(key: string): boolean;

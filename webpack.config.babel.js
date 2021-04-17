@@ -9,7 +9,7 @@ const externals = {
     lodash: 'lodash',
     moment: 'moment',
     riot: 'riot'
-}
+};
 
 const extractCss = new ExtractTextPlugin({
     filename: '[name].css'
@@ -48,11 +48,6 @@ export default {
                 }
             },
             {
-                test: /\.ts$/,
-                enforce: 'pre',
-                loader: 'tslint-loader'
-            },
-            {
                 test: /\.ts(x?)$/,
                 exclude: /node_modules/,
                 use: 'ts-loader',
@@ -83,4 +78,4 @@ export default {
             }
         ]
     }
-}
+};

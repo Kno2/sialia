@@ -1,10 +1,9 @@
 import { Section } from './section';
 import { Preferences } from './preferences';
-import { DocumentsService } from '../services';
 
 export class ViewerOptions {
-  sections: Section[];
-  data: any;
-  pref: Preferences;
-  documents?: any[];
+    public sections: Array<Section>;
+    public data: any;
+    public pref: Preferences;
+    public documents?: Array<any>;
 }

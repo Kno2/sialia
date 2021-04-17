@@ -6,4 +6,4 @@ export interface Section {
     sort?: number;
     enabled?: boolean;
 }
-export declare function updateSortOrder(sections: Section[]): Section[];
+export declare function updateSortOrder(sections: Array<Section>): Array<Section>;

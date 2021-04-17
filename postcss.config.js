@@ -3,4 +3,4 @@ module.exports = {
         'precss': {},
         'autoprefixer': {}
     }
-}
+};
