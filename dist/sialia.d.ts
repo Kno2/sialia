@@ -4,7 +4,7 @@ export declare class Sialia {
     private instance;
     private documents;
     constructor(config?: SialiaConfig);
-    configure(config: SialiaConfig): Promise<any>;
+    configure(config: SialiaConfig): void;
     open(documentOrString?: Document | string): Promise<any>;
     close(): void;
 }

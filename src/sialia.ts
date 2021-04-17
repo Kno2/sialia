@@ -15,7 +15,7 @@ export class Sialia {
         if (config) this.configure(config);
     }
 
-    public configure(config: SialiaConfig): Promise<any> {
+    public configure(config: SialiaConfig): void {
         // backwards compatibility
         this.documents = (config.docs || []).map(x => ({
             name: x['Name'] || x.name,

@@ -12,12 +12,15 @@ export default {
         rules: [
             {
                 test: /\.tag$/,
-                loader: 'riot-tag-loader',
-                enforce: 'pre',
-                query: {
-                    type: 'none',
-                    format: 'ems'
-                }
+                use: [{
+                    loader: 'riot-tag-loader',
+                    options: {
+                        enforce: 'pre',
+                        type: 'none',
+                        format: 'ems',
+                        hot: true,
+                    }
+                }]
             },
             {
                 test: /\.ts(x?)$/,
@@ -32,17 +35,11 @@ export default {
             {
                 test: /\.scss$/,
                 exclude: /dist/,
-                use: [{
-                    loader: 'style-loader'
-                }, {
-                    loader: 'css-loader'
-                }, {
-                    loader: 'sass-loader'
-                }]
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
     },
     devServer: {
-        contentBase: [__dirname, path.resolve(__dirname, '../docs')]
+        static: [__dirname, path.resolve(__dirname, '../docs')]
     }
 }
