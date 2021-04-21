@@ -48,4 +48,4 @@ client/build
 .vs/
 
 #Compiled files
-dist/dist
+dist
