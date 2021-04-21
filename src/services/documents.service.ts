@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import _ from 'lodash';
-import bluebutton from 'bluebutton';
+import bluebutton from '@kno2/bluebutton';
 import { Document, Section, ViewerOptions, Preferences } from '../models';
 import { SECTIONS, IGNORE_SECTIONS } from '../config';
 import { PreferencesService } from './preferences.service';
