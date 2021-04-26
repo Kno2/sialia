@@ -13,7 +13,7 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
-    "@kno2/bluebutton": "^0.6.2",
+    "@kno2/bluebutton": "^0.6.3",
     "@kno2/eslint-config": "^1.0.8",
     "autoprefixer": "^9.4.9",
     "bootstrap": "^4.2.1",
