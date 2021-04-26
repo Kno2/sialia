@@ -5,20 +5,7 @@ on:
     types: [published]
 
 jobs:
-  build:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
   npm:
-    needs: build
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -35,6 +22,7 @@ jobs:
       - run: npm ci
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm run build          
       - run: npm version --new-version ${{steps.set-git-version.outputs.result}} --no-git-tag-version
       - run: npm publish
         env:
