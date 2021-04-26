@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import _ from 'lodash';
 
 _.mixin({
     move: function (array, fromIndex, toIndex) {

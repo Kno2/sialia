@@ -4,9 +4,9 @@ Sialia is an embeddable C-CDA rendering library. It breaks down CDA documents in
 
 ### Installation
 
-**yarn**
+**npm**
 ```bash
-yarn add github:Royal-Jay/sialia
+npm add github:Royal-Jay/sialia
 ```
 
 **npm**
@@ -43,8 +43,8 @@ The `docs` property is an array of document objects containing a `name` and `url
 ### Building
 
 ```bash
-yarn
-yarn build
+npm
+npm build
 ```
 
 ### Development
@@ -52,7 +52,7 @@ yarn build
 To use a development server and watch for file changes, run the following command:
 
 ```bash
-yarn start
+npm start
 ```
 
 ### BlueButton Updates

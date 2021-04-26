@@ -1,0 +1,3 @@
+{
+    "extends": "@kno2/eslint-config"
+}

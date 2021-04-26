@@ -1,5 +1,5 @@
 import path from 'path';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const externals = {
     bluebutton: 'bluebutton',
@@ -9,11 +9,7 @@ const externals = {
     lodash: 'lodash',
     moment: 'moment',
     riot: 'riot'
-}
-
-const extractCss = new ExtractTextPlugin({
-    filename: '[name].css'
-});
+};
 
 export default {
     entry: {
@@ -34,23 +30,21 @@ export default {
         extensions: ['.scss', '.ts', '.tsx', '.js']
     },
     plugins: [
-        extractCss
+        new MiniCssExtractPlugin({ filename: '[name].css' })
     ],
     module: {
         rules: [
             {
                 test: /\.tag$/,
-                loader: 'riot-tag-loader',
-                enforce: 'pre',
-                query: {
-                    type: 'none',
-                    format: 'ems'
-                }
-            },
-            {
-                test: /\.ts$/,
-                enforce: 'pre',
-                loader: 'tslint-loader'
+                use: [{
+                    loader: 'riot-tag-loader',
+                    options: {
+                        enforce: 'pre',
+                        type: 'none',
+                        format: 'ems',
+                        hot: false,
+                    }
+                }]
             },
             {
                 test: /\.ts(x?)$/,
@@ -65,22 +59,8 @@ export default {
             {
                 test: /\.scss$/,
                 exclude: /dist/,
-                use: extractCss.extract({
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 1
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader'
-                        },
-                        { loader: 'sass-loader' }
-                    ],
-                    fallback: 'style-loader'
-                }),
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
             }
         ]
     }
-}
+};
