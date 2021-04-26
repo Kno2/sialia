@@ -30,6 +30,8 @@ jobs:
           script: return context.ref.replace(/refs\/tags\//, '')
           result-encoding: string
       - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: npm version --new-version ${{steps.set-git-version.outputs.result}} --no-git-tag-version
       - run: npm publish
         env:
